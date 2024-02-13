@@ -17,6 +17,7 @@ sheet = client.open_by_key(sheet_id).sheet1
 # Note: The problem statement refers to grades from 0 to 10, but the Google Sheets table refers to grades from 0 to 100. Considering this difference, I will follow the 0-100 model.
 gradeMinFinals = 50
 gradeMinApproval = 70
+absenceMax = 15
 
 # 2. DINAMIC SEARCHING SHEET SIZE, IMPORTANT ROWS AND COLUMNS
 # 2.1. Searching first and last student row
@@ -67,6 +68,6 @@ for currentRow in range(firstRowIndex,lastRowIndex+1):
             sheet.update_acell(f"{requiredGradeColumnLetter}{currentRow}",0)
     
     cellValueNumber = int(sheet.acell(f"{attendanceColumnLetter}{currentRow}").value)
-    if (cellValueNumber > 15):
+    if (cellValueNumber > absenceMax):
         sheet.update_acell(f"{situationColumnLetter}{currentRow}","Reprovado por Falta")
         sheet.update_acell(f"{requiredGradeColumnLetter}{currentRow}",0)
