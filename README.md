@@ -6,6 +6,7 @@
 - [Useful links](#useful-links)
 - [Challenge](#challenge)
 - [Rules](#rules)
+- [Preview](#preview)
 - [Assessment criteria](#assessment-criteria)
 - [Technologies](#technologies)
 - [About the author](#about-the-author)
@@ -89,6 +90,14 @@ Calculate the situation of each student based on the average of the 3 exams (P1,
 - Use log lines to track the application's activities.
 
 The texts in the source code (attributes, classes, functions, comments, etc.) should be written in English, except for the identifiers and predefined texts in this challenge.
+
+[Back to summary](#summary)
+
+
+
+## Preview
+
+![Google Sheets automation with Python](https://i.ibb.co/yqLrpYG/Design-sem-nome.gif)
 
 [Back to summary](#summary)
 
