@@ -65,7 +65,8 @@ requiredGradeColumnLetter = sheet.find("Nota para Aprovação Final").address[0]
 print("Cleaning up old modifications.")
 
 # 3.2. Cleaning cells
-# TO-DO
+cellCleanRange = f"{situationColumnLetter}{firstRowIndex}:{requiredGradeColumnLetter}{lastRowIndex}"
+sheet.batch_clear([cellCleanRange])
 
 # 4. MATHEMATICAL CALCULATIONS AND GOOGLE SHEETS UPDATE
 # 4.1. Printing feedback log
