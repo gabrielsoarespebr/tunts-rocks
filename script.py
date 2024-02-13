@@ -19,8 +19,11 @@ gradeMinFinals = 50
 gradeMinApproval = 70
 absenceMax = 15
 
-# 2. DINAMIC SEARCHING SHEET SIZE, IMPORTANT ROWS AND COLUMNS
-# 2.1. Searching first and last student row
+# 2. DYNAMIC SEARCHING SHEET SIZE, IMPORTANT ROWS AND COLUMNS
+# 2.1. Printing feedback log
+print("Using dynamic search to find sheet's size, as well as reference rows and columns.")
+
+# 2.2. Searching first and last student row
 firstRowIndex = int(sheet.find("Matricula").address[1])+1
 lastRowIndex = 1
 
@@ -39,19 +42,36 @@ while True:
     lastRowIndex = tempIndex
     break
 
-# 2.2. Searching grade columns
+# 2.3. Printing feedback log
+print(f"Important rows founded. There are {lastRowIndex - firstRowIndex + 1} students.")
+
+# 2.4. Searching grade columns
 firstGradeColumnLetter = sheet.find("P1").address[0]
 secondGradeColumnLetter = sheet.find("P2").address[0]
 thirdGradeColumnLetter = sheet.find("P3").address[0]
 
 gradeColumnList = [firstGradeColumnLetter,secondGradeColumnLetter,thirdGradeColumnLetter]
 
-# 2.3. Searching attendance, situation, required grade columns
+# 2.5. Printing feedback log
+print(f"Important columns founded. There are {len(gradeColumnList)} grades.")
+
+# 2.6. Searching attendance, situation, required grade columns
 attendanceColumnLetter = sheet.find("Faltas").address[0]
 situationColumnLetter = sheet.find("Situação").address[0]
 requiredGradeColumnLetter = sheet.find("Nota para Aprovação Final").address[0]
 
-# 3. MATHEMATICAL CALCULATIONS AND GOOGLE SHEETS UPDATE
+# 3. CLEANING SHEET
+# 3.1. Printing feedback log
+print("Cleaning up old modifications.")
+
+# 3.2. Cleaning cells
+# TO-DO
+
+# 4. MATHEMATICAL CALCULATIONS AND GOOGLE SHEETS UPDATE
+# 4.1. Printing feedback log
+print("Starting Google Sheets update.")
+
+# 4.2. Google Sheets update
 for currentRow in range(firstRowIndex,lastRowIndex+1):   
     gradeArithmeticMean = (int(sheet.acell(f"{firstGradeColumnLetter}{currentRow}").value) + int(sheet.acell(f"{secondGradeColumnLetter}{currentRow}").value) + int(sheet.acell(f"{thirdGradeColumnLetter}{currentRow}").value))/3
     
@@ -71,3 +91,6 @@ for currentRow in range(firstRowIndex,lastRowIndex+1):
     if (cellValueNumber > absenceMax):
         sheet.update_acell(f"{situationColumnLetter}{currentRow}","Reprovado por Falta")
         sheet.update_acell(f"{requiredGradeColumnLetter}{currentRow}",0)
+        
+# 4.3. Printing feedback log
+print("Finished.")
